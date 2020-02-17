@@ -37,8 +37,8 @@ class CloudbillingCli < Thor
 
   desc "create displayName", "create billing account"
   option :master_billing_account, type: :string, default: nil
-  def create(displayName)
-    billing_account_object = Google::Apis::CloudbillingV1::BillingAccount.new(displayName: displayName)
+  def create(display_name)
+    billing_account_object = Google::Apis::CloudbillingV1::BillingAccount.new(display_name: display_name)
     if options[:master_billing_account]
       billing_account_object.master_billing_account = options[:master_billing_account]
     end
