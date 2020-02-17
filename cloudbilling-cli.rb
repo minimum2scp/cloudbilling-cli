@@ -52,6 +52,8 @@ class CloudbillingCli < Thor
         scopes = [Google::Apis::CloudbillingV1::AUTH_CLOUD_PLATFORM]
         o.authorization = Google::Auth.get_application_default(scopes)
         if options[:debug]
+          o.client_options.transparent_gzip_decompression = false
+          o.client_options.log_http_requests = true
           Google::Apis.logger.level = Logger::DEBUG
         end
       }
