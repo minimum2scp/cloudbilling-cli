@@ -9,4 +9,5 @@ gem "pry-doc"
 gem "googleauth"
 gem "google-api-client"
 gem "thor"
+gem "dotenv"
 

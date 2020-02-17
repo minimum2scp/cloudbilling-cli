@@ -6,6 +6,7 @@ GEM
     coderay (1.1.2)
     declarative (0.0.10)
     declarative-option (0.1.0)
+    dotenv (2.7.5)
     faraday (0.17.3)
       multipart-post (>= 1.2, < 3)
     google-api-client (0.36.4)
@@ -56,6 +57,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dotenv
   google-api-client
   googleauth
   pry

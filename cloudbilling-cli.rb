@@ -5,8 +5,7 @@ require 'pry'
 require 'googleauth'
 require 'google/apis/cloudbilling_v1'
 require 'thor'
-
-ENV['GOOGLE_AUTH_SUPPRESS_CREDENTIALS_WARNINGS'] = '1'
+require 'dotenv/load'
 
 class CloudbillingCli < Thor
   class_option :debug, aliases: %w[D], :type => :boolean
