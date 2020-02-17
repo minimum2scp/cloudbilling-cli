@@ -35,13 +35,6 @@ class CloudbillingCli < Thor
     puts JSON.pretty_generate(policy)
   end
 
-  desc "doc", ""
-  def doc
-    puts "concepts: https://cloud.google.com/billing/docs/concepts?hl=en#subaccounts"
-    puts "API doc: https://cloud.google.com/billing/reference/rest/v1/billingAccounts?hl=en"
-    puts "google-api-client (ruby): https://github.com/googleapis/google-api-ruby-client/blob/0.36.4/generated/google/apis/cloudbilling_v1/service.rb"
-  end
-
   no_commands do
     def api
       @api ||= Google::Apis::CloudbillingV1::CloudbillingService.new.tap {|o|
