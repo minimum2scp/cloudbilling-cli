@@ -35,13 +35,16 @@ class CloudbillingCli < Thor
     puts JSON.pretty_generate(policy)
   end
 
-  desc "create displayName", "create billing account"
-  option :master_billing_account, type: :string, default: nil
-  def create(display_name)
-    billing_account_object = Google::Apis::CloudbillingV1::BillingAccount.new(display_name: display_name)
-    if options[:master_billing_account]
-      billing_account_object.master_billing_account = options[:master_billing_account]
-    end
+  desc "create", "create billing sub-account"
+  option :display_name, aliases: %w[d], type: :string, required: true
+  option :master_billing_account, aliases: %w[m], type: :string, required: true
+  def create
+    master_billing_account = options[:master_billing_account]
+    master_billing_account = "billingAccounts/#{master_billing_account}" if master_billing_account !~ /\AbillingAccounts\//
+    billing_account_object = Google::Apis::CloudbillingV1::BillingAccount.new(
+      display_name: options[:display_name],
+      master_billing_account: master_billing_account,
+    )
     ret = api.create_billing_account(billing_account_object)
     puts JSON.pretty_generate(ret)
   end
